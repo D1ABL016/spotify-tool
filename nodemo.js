@@ -60,7 +60,7 @@ async function getArtistid(artist_name) {
 }
 
 function getPlaylistId(l1) {
-    let ans = l1.replace('https://open.spotify.com/playlist/', ' ')
+    let ans = l1.replace('https://open.spotify.com/playlist/', '')
     return ans
 }
 
@@ -82,7 +82,7 @@ app.get('/callback', async function (req, res) {
         })
 
         if (!response.ok) {
-            throw new Error(`HTTP error: ${response.status}`);
+            res.send("enter a valid link")
         }
 
         const data = await response.json();
@@ -104,7 +104,6 @@ app.get('/callback', async function (req, res) {
                         ans.push(data.tracks.items[i].track.name)
                         break;
                     }
-
                 }
             }
             console.log(ans)
@@ -112,7 +111,8 @@ app.get('/callback', async function (req, res) {
         }
     }
     catch (err) {
-        console.log("Error", err)
+        // res.status(err).send("is error")
+        console.log("Error ", err)
     }
 })
 
