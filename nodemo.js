@@ -7,7 +7,7 @@ const playid = "7xLKWb79xRjzZGbSxhpO5c";
 let token = ""
 const CLIENT_ID = '4968762f41864bca9911e0b2c57b3854';
 const CLIENT_SECRET = '9f27fefc68834d3e88806cd0cba2246d';
-const REDIRECT_URI = 'http://localhost:3000/callback';
+const REDIRECT_URI = 'https://demo-2-y90d.onrender.com/callback';
 
 
 async function getToken() {
