@@ -116,6 +116,10 @@ app.get('/callback', async function (req, res) {
     }
 })
 
+app.get('/',function(req,res){
+    res.redirect("https://demo-2-y90d.onrender.com/server");
+    // res.send("got to /server")
+})
 
 app.get('/server', async function (req, res) {
     userLink = req.query['spotify_link'];
