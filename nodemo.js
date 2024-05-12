@@ -130,7 +130,7 @@ app.get('/server', async function (req, res) {
 })
 
 app.get('/',function(req,res){
-    res.redirect("http://localhost:3000/server");
+    res.redirect("https://demo-2-y90d.onrender.com/server");
     // res.send("got to /server")
 })
 
