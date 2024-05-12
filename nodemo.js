@@ -7,7 +7,7 @@ const playid = "7xLKWb79xRjzZGbSxhpO5c";
 let token = ""
 const CLIENT_ID = '4968762f41864bca9911e0b2c57b3854';
 const CLIENT_SECRET = '9f27fefc68834d3e88806cd0cba2246d';
-const REDIRECT_URI = 'https://demo-2-y90d.onrender.com/callback';
+const REDIRECT_URI = 'http://localhost:3000/callback';
 
 
 async function getToken() {
@@ -60,6 +60,7 @@ async function getArtistid(artist_name) {
 }
 
 function getPlaylistId(l1) {
+    // if 
     let ans = l1.replace('https://open.spotify.com/playlist/', '')
     return ans
 }
@@ -82,7 +83,8 @@ app.get('/callback', async function (req, res) {
         })
 
         if (!response.ok) {
-            res.send("enter a valid link")
+            // print(location.hostname  + "\n" + "enter a valid  link");  
+            res.send("oh no enterr a valid link ")
         }
 
         const data = await response.json();
@@ -100,13 +102,14 @@ app.get('/callback', async function (req, res) {
                 let a = data.tracks.items[i].track.artists
                 for (let j = 0; j < a.length; j++) {
                     if (a[j].id == Artist_id) {
-                        console.log(data.tracks.items[i].track.name)
+                        // console.log(data.tracks.items[i].track.name)
                         ans.push(data.tracks.items[i].track.name)
                         break;
                     }
                 }
             }
-            console.log(ans)
+            // console.log(ans)
+            console.log("data is processed completely")
             res.send(ans)
         }
     }
@@ -116,19 +119,20 @@ app.get('/callback', async function (req, res) {
     }
 })
 
-app.get('/',function(req,res){
-    res.redirect("https://demo-2-y90d.onrender.com/server");
-    // res.send("got to /server")
-})
-
 app.get('/server', async function (req, res) {
-    userLink = req.query['spotify_link'];
-    ArtistName = req.query['Artist'];
+    userLink = req.query['spotify_link'] || ("7xLKWb79xRjzZGbSxhpO5c");
+    console.log(userLink)
+    ArtistName = req.query['Artist'] || ("krsna");
+    console.log(ArtistName)
 
     res.redirect(`https://accounts.spotify.com/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}`);
 
 })
 
+app.get('/',function(req,res){
+    res.redirect("http://localhost:3000/server");
+    // res.send("got to /server")
+})
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
