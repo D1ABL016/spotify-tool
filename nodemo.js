@@ -120,9 +120,9 @@ app.get('/callback', async function (req, res) {
 })
 
 app.get('/server', async function (req, res) {
-    userLink = req.query['spotify_link'] || ("7xLKWb79xRjzZGbSxhpO5c");
+    userLink = req.query['spotify_link'] ;
     console.log(userLink)
-    ArtistName = req.query['Artist'] || ("krsna");
+    ArtistName = req.query['Artist'] ;
     console.log(ArtistName)
 
     res.redirect(`https://accounts.spotify.com/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}`);
