@@ -7,7 +7,7 @@ const playid = "7xLKWb79xRjzZGbSxhpO5c";
 let token = ""
 const CLIENT_ID = '4968762f41864bca9911e0b2c57b3854';
 const CLIENT_SECRET = '9f27fefc68834d3e88806cd0cba2246d';
-const REDIRECT_URI = locationHost + "/callback";
+const REDIRECT_URI = "https://spotify-tool-2.onrender.com/callback";
 
 
 async function getToken() {
@@ -131,7 +131,7 @@ app.get('/server', async function (req, res) {
 })
 
 app.get('/',function(req,res){
-    let tempUri = locationHost + "/server"
+    let tempUri = "https://spotify-tool-2.onrender.com" + "/server"
     res.redirect(tempUri);
     // res.send("got to /server")
 })
